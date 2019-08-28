@@ -1,5 +1,7 @@
 const https = require('https')
 const {URLSearchParams} = require('url');
+
+// WARNING! Never ever publish your real/production reCAPTCHA secret.
 const secret = '6Le7VbUUAAAAADm3L-7Jnbau2h3DGsyuFneOKPZn'
 
 
