@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Your reCAPTCHA v3 score</title>
+    <style>
+      body {
+        font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+        padding: 20px 20px 60px;
+        max-width: 680px;
+        margin: 0 auto;
+        font-size: 16px;
+        line-height: 1.65;
+        word-break: break-word;
+        font-kerning: auto;
+        font-variant: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        hyphens: auto;
+        text-align: center;
+      }
+
+      h1 {
+        margin-top: 70px; 
+        text-align: center; 
+        font-size: 45px; 
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Your reCAPTCHA v3 score is <span class="score">(checking...)</span></h1>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le7VbUUAAAAADe3EAGXZ-VFTQNsEZSTT5CjjRcZ"></script>
+    <script>
+      function main() {
+        const siteKey = '6Le7VbUUAAAAADe3EAGXZ-VFTQNsEZSTT5CjjRcZ'
+        grecaptcha.ready(async () => {
+          const token = await grecaptcha.execute(siteKey, {action: 'test'})
+          const response = await fetch("/verify.js", {
+            method: 'POST',
+            body: JSON.stringify({token}),
+            headers: {'Content-Type': 'application/json'}
+          })
+          const payload = await response.json();
+          const result = payload.success ? 
+            payload.score : 
+            payload['error-codes'].join(', ')
+          document.querySelector(".score").textContent = result
+        });
+      }
+
+      main();
+    </script>
+  </body>
+</html>

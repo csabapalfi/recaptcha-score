@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "recaptcha-score",
+  "builds": [
+    { "src": "index.html", "use": "@now/static" },
+    { "src": "verify.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "index.html" }
+  ]
+}
