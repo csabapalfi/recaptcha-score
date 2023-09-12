@@ -29,10 +29,10 @@
   </head>
   <body>
     <h1>Your reCAPTCHA v3 score is <span class="score">(checking...)</span></h1>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le7VbUUAAAAADe3EAGXZ-VFTQNsEZSTT5CjjRcZ"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf6YRwoAAAAABUjvVe_edzY8YOhVmwKeHvNZU7r"></script>
     <script>
       function main() {
-        const siteKey = '6Le7VbUUAAAAADe3EAGXZ-VFTQNsEZSTT5CjjRcZ'
+        const siteKey = '6Lf6YRwoAAAAABUjvVe_edzY8YOhVmwKeHvNZU7r'
         grecaptcha.ready(async () => {
           const token = await grecaptcha.execute(siteKey, {action: 'test'})
           const response = await fetch("/verify.js", {
